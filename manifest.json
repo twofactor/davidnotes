@@ -1,0 +1,7 @@
+{
+  "name": "DavidNotes",
+  "short_name": "DavidNotes",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape"
+}

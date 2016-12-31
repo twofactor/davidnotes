@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Write cool notes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Notes</title>
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div id="react-content">Hello world</div>
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBigoLPAUwIO9Saasbi4AkqtELwcdE9RMM",
+    authDomain: "davidnotes-edbf8.firebaseapp.com",
+    databaseURL: "https://davidnotes-edbf8.firebaseio.com",
+    storageBucket: "davidnotes-edbf8.appspot.com",
+    messagingSenderId: "423654397128"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

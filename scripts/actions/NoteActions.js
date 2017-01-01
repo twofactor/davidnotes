@@ -20,6 +20,14 @@ class NoteActions {
   setNotebooks(notebooks) {
     return notebooks;
   }
+
+  setNewNotebookName(nameObject) {
+    return nameObject;
+  }
+
+  setCurrentNotebook(notebookObject) {
+    return notebookObject;
+  }
 }
 
 export default alt.createActions(NoteActions);

@@ -43,7 +43,6 @@ export default class NotesListView extends React.Component {
   handleFormSubmit(e) {
     e.preventDefault();
     const { auth, currentNotebook, newNoteTitle } = this.props;
-    console.log(currentNotebook);
     this.createNewNote(auth.currentUser.uid, currentNotebook['id'], newNoteTitle);
   }
 

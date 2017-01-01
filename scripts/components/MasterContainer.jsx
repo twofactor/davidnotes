@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import config from '../firebaseCredentials';
 import NoteStore from '../stores/NoteStore';
 import NoteActions from '../actions/NoteActions';
-import NoteContainer from './NoteContainer.jsx';
+import AppContainer from './AppContainer.jsx';
 
 export default class MasterContainer extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ export default class MasterContainer extends React.Component {
     return (
       <div>
         {!user && <button onClick={this.signIn}>Sign In</button>}
-        {user && <NoteContainer {...this.props} />}
+        {user && <AppContainer {...this.props} />}
       </div>
     );
   }

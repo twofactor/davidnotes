@@ -10,6 +10,7 @@ class NoteStore {
     this.notebooks = [];
     this.newNotebookName = '';
     this.currentNotebook = '';
+    this.newNoteTitle = '';
 
     this.bindListeners({
       handleAuthChange: NoteActions.CHANGE_AUTH,
@@ -19,6 +20,8 @@ class NoteStore {
       handleSetNotebooks: NoteActions.SET_NOTEBOOKS,
       handleSetNewNotebookName: NoteActions.SET_NEW_NOTEBOOK_NAME,
       handleSetCurrentNotebook: NoteActions.SET_CURRENT_NOTEBOOK,
+      handleSetNotesList: NoteActions.SET_NOTES_LIST,
+      handleSetNewNoteTitle: NoteActions.SET_NEW_NOTE_TITLE,
     });
   }
 
@@ -49,6 +52,14 @@ class NoteStore {
 
   handleSetCurrentNotebook(notebookObject) {
     this.currentNotebook = notebookObject;
+  }
+
+  handleSetNotesList(notes) {
+    this.notesList = notes;
+  }
+
+  handleSetNewNoteTitle(title) {
+    this.newNoteTitle = title;
   }
 }
 

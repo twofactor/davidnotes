@@ -10,8 +10,8 @@ export default class Notebook extends React.Component {
   }
 
   handleNotebookClick() {
-    const { name, key } = this.props;
-    NoteActions.setCurrentNotebook({name, key});
+    const { name, id } = this.props;
+    NoteActions.setCurrentNotebook({name, id});
   }
 
   render() {

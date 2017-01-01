@@ -35,7 +35,7 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
-    const { notebooks, newNotebookName } = this.props;
+    const { notebooks, newNotebookName, database, auth } = this.props;
     return (
       <div>
         {!notebooks && "No notebooks yet."}
@@ -43,7 +43,10 @@ export default class Sidebar extends React.Component {
           return (
             <Notebook
               key={key}
+              id={key}
               name={notebooks[key]['name']}
+              database={database}
+              auth={auth}
             />
           );
         })}

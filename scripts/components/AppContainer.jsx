@@ -46,7 +46,7 @@ export default class AppContainer extends React.Component {
         <h1>Welcome, {user.displayName}</h1>
         <button onClick={this.signOut}>Sign Out</button>
         <Sidebar {...this.props} />
-        <NotesListView currentNotebook={currentNotebook} />
+        {currentNotebook && <NotesListView {...this.props} />}
       </div>
     );
   }

@@ -28,6 +28,14 @@ class NoteActions {
   setCurrentNotebook(notebookObject) {
     return notebookObject;
   }
+
+  setNotesList(notes) {
+    return notes;
+  }
+
+  setNewNoteTitle(title) {
+    return title;
+  }
 }
 
 export default alt.createActions(NoteActions);

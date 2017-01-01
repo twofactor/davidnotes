@@ -1,4 +1,4 @@
-import alt from '../src/alt';
+import alt from '../utils/alt';
 
 class NoteActions {
   changeAuth(user) {
@@ -11,6 +11,14 @@ class NoteActions {
 
   setAuth(auth) {
     return auth;
+  }
+
+  signOut() {
+    return true;
+  }
+
+  setNotebooks(notebooks) {
+    return notebooks;
   }
 }
 

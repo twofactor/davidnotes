@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import config from '../firebaseCredentials';
 import NoteStore from '../stores/NoteStore';
 import NoteActions from '../actions/NoteActions';
+import NoteContainer from './NoteContainer.jsx';
 
 export default class MasterContainer extends React.Component {
   constructor(props) {
@@ -14,7 +15,6 @@ export default class MasterContainer extends React.Component {
     this.initializeFirebase = this.initializeFirebase.bind(this);
     this.onAuthStateChange = this.onAuthStateChange.bind(this);
     this.signIn = this.signIn.bind(this);
-    this.signOut = this.signOut.bind(this);
   }
 
   componentDidMount() {
@@ -32,8 +32,11 @@ export default class MasterContainer extends React.Component {
   initializeFirebase() {
     const app = firebase.initializeApp(config);
     const auth = firebase.auth();
+    const database = firebase.database();
+
     auth.onAuthStateChanged(this.onAuthStateChange);
     NoteActions.setAuth(auth);
+    NoteActions.setDatabase(database);
   }
 
   onAuthStateChange(user) {
@@ -46,17 +49,12 @@ export default class MasterContainer extends React.Component {
     auth.signInWithPopup(provider);
   }
 
-  signOut() {
-    const { auth } = this.props;
-    auth.signOut();
-  }
-
   render() {
     const { user } = this.props;
     return (
       <div>
         {!user && <button onClick={this.signIn}>Sign In</button>}
-        {user && <button onClick={this.signOut}>Sign Out</button>}
+        {user && <NoteContainer {...this.props} />}
       </div>
     );
   }

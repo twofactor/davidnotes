@@ -43,7 +43,6 @@ export default class Editor extends React.Component {
 
   render() {
     const { currentNote } = this.props;
-    console.log(currentNote);
     const { title, body, last_update_time } = currentNote;
     return (
       <div>

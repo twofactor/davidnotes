@@ -4,6 +4,7 @@ import { each } from 'underscore';
 
 import Sidebar from './Sidebar.jsx';
 import NotesListView from './NotesListView.jsx';
+import Editor from './Editor.jsx';
 import NoteActions from '../actions/NoteActions';
 import emptyUserData from '../utils/emptyUserData';
 import validateUser from '../utils/validateUser';
@@ -40,13 +41,14 @@ export default class AppContainer extends React.Component {
   }
 
   render() {
-    const { user, currentNotebook } = this.props;
+    const { user, currentNotebook, currentNoteId } = this.props;
     return (
       <div>
         <h1>Welcome, {user.displayName}</h1>
         <button onClick={this.signOut}>Sign Out</button>
         <Sidebar {...this.props} />
         {currentNotebook && <NotesListView {...this.props} />}
+        {currentNoteId && <Editor {...this.props} />}
       </div>
     );
   }

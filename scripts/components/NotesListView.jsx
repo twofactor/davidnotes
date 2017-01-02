@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NoteActions from '../actions/NoteActions';
+import NoteSummary from './NoteSummary.jsx';
 
 export default class NotesListView extends React.Component {
   constructor(props) {
@@ -9,31 +10,37 @@ export default class NotesListView extends React.Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.createNewNote = this.createNewNote.bind(this);
-    this.updateNotesList = this.updateNotesList.bind(this);
+    this.addEventListenerToNote = this.addEventListenerToNote.bind(this);
+    this.removeEventListenerOnNote = this.removeEventListenerOnNote.bind(this);
   }
 
   componentWillMount() {
     const { currentNotebook, database, auth } = this.props;
     const userId = auth.currentUser.uid;
-    this.updateNotesList(userId, currentNotebook['id'], database);
+    this.addEventListenerToNote(userId, currentNotebook['id'], database);
   }
 
   componentWillReceiveProps(nextProps) {
     const { currentNotebook, auth, database } = nextProps;
     if (this.props.currentNotebook.id !== currentNotebook.id) {
-      this.updateNotesList(auth.currentUser.uid, currentNotebook['id'], database);
+      this.removeEventListenerOnNote(auth.currentUser.uid, this.props.currentNotebook.id, database);
+      this.addEventListenerToNote(auth.currentUser.uid, currentNotebook['id'], database);
     }
   }
 
-  updateNotesList(userId, notebookId, database) {
+  addEventListenerToNote(userId, notebookId, database) {
     database.ref('users/user-' + userId + '/notes_meta/' + notebookId).on('value', (snapshot) => {
       NoteActions.setNotesList(snapshot.val());
     });
   }
 
+  removeEventListenerOnNote(userId, notebookId, database) {
+    database.ref('users/user-' + userId + '/notes_meta/' + notebookId).off();
+  }
+
   componentWillUnmount() {
     const { currentNotebook, database, lastUserId } = this.props;
-    database.ref('users/user-' + lastUserId + '/notes_meta/' + currentNotebook['id']).off();
+    this.removeEventListenerOnNote(lastUserId, currentNotebook.id, database);
   }
 
   handleFormChange(e) {
@@ -58,7 +65,7 @@ export default class NotesListView extends React.Component {
       database.ref('users/user-' + userId + '/notes').child(snapshot.key).set({
         title,
         notebook_id: notebookId,
-        body: '',
+        first_twenty_chars: '',
         last_update_time: currentTime.toString(),
       });
     });
@@ -79,7 +86,7 @@ export default class NotesListView extends React.Component {
         </form>
         {!notesList && 'No notes to show'}
         {notesList && Object.keys(notesList).map((key) => {
-          return (<h4 key={key}>{notesList[key]['title']}</h4>);
+          return (<NoteSummary key={key} id={key} note={notesList[key]} />);
         })}
         <br />
       </div>

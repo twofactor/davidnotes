@@ -36,6 +36,14 @@ class NoteActions {
   setNewNoteTitle(title) {
     return title;
   }
+
+  setCurrentNoteId(noteId) {
+    return noteId;
+  }
+
+  setCurrentNote(noteObject) {
+    return noteObject;
+  }
 }
 
 export default alt.createActions(NoteActions);

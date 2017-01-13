@@ -1,0 +1,55 @@
+.md-RichEditor-root {
+    max-width: 640px;
+    margin: auto;
+    border: 1px solid #000;
+}
+
+.md-block-paragraph {
+    font-family: "Source Sans Pro", Sans-Serif;
+    font-size: 16px;
+    color: rgba(37,50,55,0.88);
+    letter-spacing: 0;
+    line-height: 24px;
+}
+
+.md-RichEditor-root h2 {
+    font-family: "Source Sans Pro";
+    font-weight: 600;
+    font-size: 20px;
+    color: #263238;
+}
+
+.public-DraftEditorPlaceholder-root {
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    color: rgba(37,50,55,0.62);
+    letter-spacing: 0;
+    line-height: 24px;
+}
+
+.md-editor-toolbar {
+    background: #FFFFFF;
+    border: 1px solid #ECEFF1;
+    box-shadow: 0 2px 4px 0 rgba(38,49,56,0.04);
+    border-radius: 4px;
+}
+
+.md-RichEditor-styleButton {
+    color: #333333;
+}
+
+.md-RichEditor-styleButton:hover {
+    color: #2196F3;
+}
+
+[class*=hint--]:after {
+    background: #383838;
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    line-height: 12px;
+    white-space: nowrap;
+    text-shadow: 0 -1px 0 #000;
+    box-shadow: 0px;
+}
